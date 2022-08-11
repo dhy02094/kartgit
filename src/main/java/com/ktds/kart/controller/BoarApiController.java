@@ -65,11 +65,11 @@ public class BoarApiController {
     //                 return boardRepository.save(newBoard);
     //             });
 
-    @PutMapping("/look/edit/{bno}")
-	public ResponseEntity<?> updateBoard(@PathVariable("bno") Long bno,  @RequestBody Board board, BoardDto boardDto) {
-        boardRepository.findById(bno);
-        Board updatedBoard = boardService.savePost(updatedBoard);
-        return new ResponseEntity.ok(updatedBoard);
+    // @PutMapping("/look/edit/{bno}")
+	// public ResponseEntity<?> updateBoard(@PathVariable("bno") Long bno,  @RequestBody Board board, BoardDto boardDto) {
+    //     boardRepository.findById(bno);
+    //     Board updatedBoard = boardService.savePost(updatedBoard);
+    //     return new ResponseEntity.ok(updatedBoard);
 
 
 
