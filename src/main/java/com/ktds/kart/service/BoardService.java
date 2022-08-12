@@ -150,4 +150,10 @@ public class BoardService {
 
         return bno;
     }
+
+    //view counting
+    @Transactional
+    public int updateView(Long bno) {
+        return boardRepository.updateView(bno);
+    }
     }

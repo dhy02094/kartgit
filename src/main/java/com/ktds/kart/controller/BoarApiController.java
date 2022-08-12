@@ -3,6 +3,8 @@ package com.ktds.kart.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,7 @@ import lombok.Setter;
 
 
 @RestController
+// @CrossOrigin(origins = "http://localhost:8080", allowCredentials = "true")
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoarApiController {
@@ -44,7 +47,10 @@ public class BoarApiController {
 
     // 단건 조회
     @GetMapping("/list/{bno}")
-    public Board getBoard(@PathVariable Long bno) {
+    public Board getBoard(@PathVariable("bno") Long bno, Model model) {
+        BoardDto boardDto = boardService.getPost(bno);
+        boardService.updateView(bno);
+        model.addAttribute("boardDto",boardDto);
         return boardRepository.findById(bno)
                 .orElseThrow(() -> new IllegalArgumentException("illegal argument: " + bno));
     }
@@ -60,6 +66,8 @@ public class BoarApiController {
     public void delet(@PathVariable Long bno){
         boardService.delete(bno);
     }
+
+
 
 
 

@@ -23,7 +23,7 @@ import com.ktds.kart.service.BoardService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/homepg")
+// @RequestMapping("/homepg")
 public class BoardController {
 
     private BoardService boardService;
@@ -64,7 +64,7 @@ public class BoardController {
     @GetMapping("/post/{no}")
     public String detail(@PathVariable("no") Long bno, Model model) {
         BoardDto boardDto = boardService.getPost(bno);
-
+        boardService.updateView(bno);
         model.addAttribute("boardDto",boardDto);
         return "board/detail.html";
     }
@@ -97,4 +97,12 @@ public class BoardController {
 
         return "board/list.html";
     }
+
+    // @GetMapping("/post/{bno}")
+    // public String read(@PathVariable("bno") Long bno, Model model) {
+    //     BoardDto boardDto = boardService.getPost(bno);        
+    //     boardService.updateView(bno); // views ++        
+    //     model.addAttribute("boardDto", boardDto);         
+    //     return "board-read"; }
+    
 }

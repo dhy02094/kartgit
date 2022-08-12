@@ -45,8 +45,8 @@ public class Board extends BaseEntity{
     @JoinColumn(name="cid")
     private Category cid;
 
-    @ColumnDefault("0")
-    private Long view;
+    @Column(columnDefinition = "integer default 0", nullable =  false)
+    private int view;
 
     @Column(columnDefinition ="boolean default false")
     private boolean complete;
@@ -55,11 +55,12 @@ public class Board extends BaseEntity{
 
 
     @Builder
-    public Board(Long bno, String title, String content, Long price) {
+    public Board(Long bno, String title, String content, Long price, int view) {
         this.bno = bno;
         this.title = title;
         this.content = content;
         this.price = price;
+        this.view = view;
     }
 
     public void update(String title, String content, Long price) {
