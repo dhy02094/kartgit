@@ -62,8 +62,7 @@ public class Board extends BaseEntity{
         this.price = price;
     }
 
-    public void update(Long bno, String title, String content, Long price) {
-        this.bno = bno;
+    public void update(String title, String content, Long price) {
         this.title = title;
         this.content = content;
         this.price = price;

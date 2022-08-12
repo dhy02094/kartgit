@@ -100,6 +100,14 @@ public class BoardService {
         boardRepository.deleteById(bno);
     }
 
+    @Transactional
+    public void delete(Long bno){
+        Board board = boardRepository.findById(bno)
+                .orElseThrow(()->new IllegalArgumentException("해당 게시물이 존재하지 않습니다."));
+
+        boardRepository.delete(board);
+    }
+
     public Integer[] getPageList(Integer curPageNum) {
         Integer[] pageList = new Integer[BLOCK_PAGE_NUM_COUNT];
 
@@ -128,5 +136,18 @@ public class BoardService {
     @Transactional
     public Long getBoardCount() {
         return boardRepository.count();
+    }
+
+    @Transactional
+    public Long update(Long bno, BoardDto boardDto) {
+        Board board = boardRepository.findById(bno)
+        	.orElseThrow(() -> new
+            IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+
+        board.update(boardDto.getTitle(),
+                boardDto.getContent(),
+                boardDto.getPrice());
+
+        return bno;
     }
     }

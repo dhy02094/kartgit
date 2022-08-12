@@ -3,6 +3,7 @@ package com.ktds.kart.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,28 +49,15 @@ public class BoarApiController {
                 .orElseThrow(() -> new IllegalArgumentException("illegal argument: " + bno));
     }
 
-    // 수정
-    
-  	//수정 
-    // @PutMapping("/{bno}")
-    // public void updateBoard(@PathVariable Long bno, @RequestBody Board newBoard) {
-    //     boardRepository.findById(bno)
-    //             .map(board -> {
-    //                 board.setTitle(newBoard.getTitle());
-    //                 board.setContent(newBoard.getContent());
+    @PutMapping("/look/{bno}")
+    public Long updateBoard(@PathVariable("bno") Long bno, @RequestBody BoardDto boardDto) {
+        return boardService.update(bno, boardDto);
+    }
 
-    //                 return boardRepository.save(board);
-    //             })
-    //             .orElseGet(() -> {
-    //                 newBoard.setBno(bno);
-    //                 return boardRepository.save(newBoard);
-    //             });
-
-    // @PutMapping("/look/edit/{bno}")
-	// public ResponseEntity<?> updateBoard(@PathVariable("bno") Long bno,  @RequestBody Board board, BoardDto boardDto) {
-    //     boardRepository.findById(bno);
-    //     Board updatedBoard = boardService.savePost(updatedBoard);
-    //     return new ResponseEntity.ok(updatedBoard);
+    @DeleteMapping("/look/delete/{bno}")
+    public void delet(@PathVariable Long bno){
+        boardService.delete(bno);
+    }
 
 
 
