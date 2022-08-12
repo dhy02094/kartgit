@@ -25,8 +25,7 @@ import lombok.Setter;
 
 
 @RestController
-// @CrossOrigin(origins = "http://localhost:8080", allowCredentials = "true")
-@RequestMapping("/board")
+@RequestMapping("/api/board")
 @RequiredArgsConstructor
 public class BoarApiController {
     
