@@ -55,12 +55,13 @@ public class Board extends BaseEntity{
 
 
     @Builder
-    public Board(Long bno, String title, String content, Long price, int view) {
+    public Board(Long bno, String title, String content, Long price, int view, Member nickname) {
         this.bno = bno;
         this.title = title;
         this.content = content;
         this.price = price;
         this.view = view;
+        this.nickname = nickname;
     }
 
     public void update(String title, String content, Long price) {

@@ -38,12 +38,13 @@ public Board toEntity() {
 }
 
 @Builder
-public BoardDto(Long bno, String title, String content, int view, Long price, LocalDateTime reg_date, LocalDateTime mod_date) {
+public BoardDto(Long bno, String title, String content, int view, Long price, Member nickname, LocalDateTime reg_date, LocalDateTime mod_date) {
     this.bno = bno;
     this.title = title;
     this.content = content;
     this.view = view;
     this.price = price;
+    this.nickname = nickname;
     this.reg_date = reg_date;
     this.mod_date = mod_date;
 }

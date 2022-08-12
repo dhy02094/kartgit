@@ -42,6 +42,7 @@ public class BoardService {
                 .title(board.getTitle())
                 .content(board.getContent())
                 .price(board.getPrice())
+                .nickname(board.getNickname())
                 .reg_date(board.getReg_date())
                 .build();
     }
@@ -71,6 +72,7 @@ public class BoardService {
                                 .title(board.getTitle())
                                 .content(board.getContent())
                                 .price(board.getPrice())
+                                .nickname(board.getNickname())
                                 .reg_date(board.getReg_date())
                                 .build();
 
@@ -89,6 +91,7 @@ public class BoardService {
                             .title(board.getTitle())
                             .content(board.getContent())
                             .price(board.getPrice())
+                            .nickname(board.getNickname())
                             .reg_date(board.getReg_date())
                             .build();
         
