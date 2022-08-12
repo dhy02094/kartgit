@@ -7,3 +7,4 @@ import com.ktds.kart.entity.Member;
 public interface MemberRepository extends JpaRepository<Member,Long> {
     
 }
+

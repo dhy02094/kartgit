@@ -46,10 +46,10 @@ public class BoarApiController {
 
     // 단건 조회
     @GetMapping("/list/{bno}")
-    public Board getBoard(@PathVariable("bno") Long bno, Model model) {
-        BoardDto boardDto = boardService.getPost(bno);
+    public Board getBoard(@PathVariable("bno") Long bno) { //, Model model
+        //BoardDto boardDto = boardService.getPost(bno);
         boardService.updateView(bno);
-        model.addAttribute("boardDto",boardDto);
+        //model.addAttribute("boardDto",boardDto);
         return boardRepository.findById(bno)
                 .orElseThrow(() -> new IllegalArgumentException("illegal argument: " + bno));
     }
