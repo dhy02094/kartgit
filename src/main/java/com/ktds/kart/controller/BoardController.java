@@ -23,6 +23,7 @@ import com.ktds.kart.service.BoardService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequestMapping("/homepg")
 public class BoardController {
 
     private BoardService boardService;

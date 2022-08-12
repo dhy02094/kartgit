@@ -23,7 +23,7 @@ import lombok.Setter;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoarApiController {
     
@@ -37,24 +37,26 @@ public class BoarApiController {
         return ResponseEntity.ok(savedBoard);
     }
     // 목록 조회
-    @GetMapping("/look")
+    @GetMapping("/list")
     public List<Board> all() {
         return boardRepository.findAll();
     }
 
     // 단건 조회
-    @GetMapping("/look/{bno}")
+    @GetMapping("/list/{bno}")
     public Board getBoard(@PathVariable Long bno) {
         return boardRepository.findById(bno)
                 .orElseThrow(() -> new IllegalArgumentException("illegal argument: " + bno));
     }
 
-    @PutMapping("/look/{bno}")
+    // 수정
+    @PutMapping("/list/{bno}")
     public Long updateBoard(@PathVariable("bno") Long bno, @RequestBody BoardDto boardDto) {
         return boardService.update(bno, boardDto);
     }
 
-    @DeleteMapping("/look/delete/{bno}")
+    //삭제
+    @DeleteMapping("/list/{bno}")
     public void delet(@PathVariable Long bno){
         boardService.delete(bno);
     }
